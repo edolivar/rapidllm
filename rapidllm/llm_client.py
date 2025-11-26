@@ -81,7 +81,7 @@ class RapidClient:
         #     return None
 
     # UPDATED FUNCTION: Accepts audio_path instead of media_path (image)
-    def generate_chat_response(self, message: str, prompt: str = "You are a helpful AI assistant.", audio_path: Optional[str] = None ) -> str :
+    def generate_chat_response(self, message: str, prompt: str = "Helpful AI. Give me a bare string no added newlines", audio_path: Optional[str] = None ) -> str :
         """
         Creates a chat completion using a system prompt, a user message, and optional audio file.
         The audio file is first transcribed to text.
@@ -131,7 +131,7 @@ class RapidClient:
                 model=self.settings.default_model,
                 messages=messages,
             )
-            return response.choices[0].message.content
+            return response.choices[0].message.content.strip()
         except Exception as e:
             # Handle potential API or connection errors
             print(f"LLM API Error: {e}")

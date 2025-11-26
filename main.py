@@ -32,5 +32,5 @@ async def root():
 def simple_prompt(message: Annotated[str, Query()], audio_path: Annotated[str, Query()]):
     app_logger.info("Message Recieved: %s and a media_path of %s", message, audio_path)
     result = client.generate_chat_response(message=message, audio_path=audio_path)
-    return {'value': result}
+    return {"joke": result }
 
