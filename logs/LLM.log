@@ -1,0 +1,9 @@
+2025-11-26 00:46:01,111 - LLM - DEBUG - Attempting to transcribe audio from audio/Untitled.m4a
+2025-11-26 00:46:01,112 - LLM - ERROR - Audio file not found at path: audio/audio/Untitled.m4a
+2025-11-26 00:46:01,112 - LLM - WARNING - Could not transcribe audio. Proceeding with text message only.
+2025-11-26 00:46:01,112 - LLM - INFO - Request Content: tell me a joke
+2025-11-26 00:46:24,000 - LLM - DEBUG - Attempting to transcribe audio from Untitled.m4a
+2025-11-26 00:46:24,000 - LLM - INFO - found an audio file
+2025-11-26 00:46:24,000 - LLM - INFO - Request Content: tell me a joke
+
+**Transcribed Audio:** tell me a joke
