@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import Annotated
+from typing import Annotated, Optional
 
 from fastapi import FastAPI
 from fastapi.params import Query
@@ -33,8 +33,12 @@ async def root():
 
 @app.get("/rapid/exampleai", tags=[Tags.example])
 def simple_prompt(
-    message: Annotated[str, Query()], audio_path: Annotated[str, Query()]
+    message: Annotated[Optional[str], Query()] = None,
+    prompt: Annotated[Optional[str], Query()] = None,
+    audio_path: Annotated[Optional[str], Query()] = None,
 ):
     app_logger.info("Message Recieved: %s and a media_path of %s", message, audio_path)
-    result = client.generate_chat_response(message=message, audio_path=audio_path)
-    return {"joke": result}
+    result = client.generate_chat_response(
+        message=message, prompt=prompt, audio_path=audio_path
+    )
+    return {"result": result}

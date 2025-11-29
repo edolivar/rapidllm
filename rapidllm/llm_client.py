@@ -1,7 +1,7 @@
-import base64
 import os
-from typing import Any, Optional
+from typing import Optional
 
+import whisper
 from openai import OpenAI
 from pydantic import BaseModel, Field
 
@@ -14,6 +14,7 @@ config_data = RapidLoggerConfig(
 )
 
 app_logger = RapidLogger(config_data)
+model = whisper.load_model("base")
 
 
 # --- 1. Pydantic Model for Client Configuration ---
@@ -34,7 +35,9 @@ class RapidClientSettings(BaseModel):
 
 
 # --- 2. The Main LLM Client Class (Composition) ---
-# NOTE:
+# NOTE: Make it so that if no settings are passed have a default client settings object is created.
+
+
 class RapidClient:
     """A wrapper class that utilizes a Pydantic model for its configuration."""
 
@@ -64,28 +67,24 @@ class RapidClient:
         if not os.path.exists(full_audio_path):
             app_logger.error(f"Audio file not found at path: {full_audio_path}")
             return None
-        app_logger.info("found an audio file")
-        return "tell me a joke"
         # The OpenAI transcription API requires the file object
-        # try:
-        #     with open(full_audio_path, "rb") as audio_file:
-        #         app_logger.info("Starting audio transcription...")
-        #         # The 'whisper-1' model is the standard for transcription
-        #         transcription = self.client.audio.transcriptions.create(
-        #             model="whisper-1",
-        #             file=audio_file
-        #         )
-        #         app_logger.info("Transcription complete.")
-        #         return transcription.text
-        # except Exception as e:
-        #     app_logger.error(f"Error during audio transcription for {full_audio_path}: {e}")
-        #     return None
+        try:
+            with open(full_audio_path, "rb") as audio_file:
+                app_logger.info("Starting audio transcription...")
+                result = model.transcribe(full_audio_path)
+                app_logger.info("Transcription complete.")
+                return result["text"]
+        except Exception as e:
+            app_logger.error(
+                f"Error during audio transcription for {full_audio_path}: {e}"
+            )
+            return None
 
     # UPDATED FUNCTION: Accepts audio_path instead of media_path (image)
     def generate_chat_response(
         self,
-        message: str,
-        prompt: str = "Helpful AI. Give me a bare string no added newlines",
+        message: str | None,
+        prompt: str | None = "Helpful AI. Give me a bare string no added newlines",
         audio_path: Optional[str] = None,
     ) -> str:
         """

@@ -87,3 +87,51 @@
 2025-11-26 01:13:35,330 - LLM - INFO - Request Content: tell me a joke
 
 **Transcribed Audio:** tell me a joke
+2025-11-29 06:38:47,511 - LLM - DEBUG - Attempting to transcribe audio from Untitled.m4a
+2025-11-29 06:38:47,511 - LLM - INFO - Starting audio transcription...
+2025-11-29 06:38:49,259 - LLM - INFO - Transcription complete.
+2025-11-29 06:38:49,260 - LLM - ERROR - Error during audio transcription for audio/Untitled.m4a: 'dict' object has no attribute 'text'
+2025-11-29 06:38:49,260 - LLM - WARNING - Could not transcribe audio. Proceeding with text message only.
+2025-11-29 06:38:49,260 - LLM - INFO - Request Content: Transcribe this
+2025-11-29 06:42:22,470 - LLM - DEBUG - Attempting to transcribe audio from Untitled.m4a
+2025-11-29 06:42:22,471 - LLM - INFO - Starting audio transcription...
+2025-11-29 06:42:23,889 - LLM - INFO - Transcription complete.
+2025-11-29 06:42:23,890 - LLM - INFO - Request Content: Transcribe this
+
+**Transcribed Audio:**  Testing, testing, is this thing working? Tell me a joke.
+2025-11-29 06:43:53,015 - LLM - DEBUG - Attempting to transcribe audio from Untitled.m4a
+2025-11-29 06:43:53,016 - LLM - INFO - Starting audio transcription...
+2025-11-29 06:43:54,331 - LLM - INFO - Transcription complete.
+2025-11-29 06:43:54,332 - LLM - INFO - Request Content: do what the transcription says
+
+**Transcribed Audio:**  Testing, testing, is this thing working? Tell me a joke.
+2025-11-29 06:49:14,012 - LLM - DEBUG - Attempting to transcribe audio from Untitled.m4a
+2025-11-29 06:49:14,012 - LLM - INFO - Starting audio transcription...
+2025-11-29 06:49:15,792 - LLM - INFO - Transcription complete.
+2025-11-29 06:49:15,792 - LLM - INFO - Request Content: do what the transcription says
+
+**Transcribed Audio:**  Testing, testing, is this thing working? Tell me a joke.
+2025-11-29 18:50:13,258 - LLM - DEBUG - Attempting to transcribe audio from Untitled.m4a
+2025-11-29 18:50:13,259 - LLM - INFO - Starting audio transcription...
+2025-11-29 18:50:14,686 - LLM - INFO - Transcription complete.
+2025-11-29 18:50:14,686 - LLM - INFO - Request Content: do what the transcription says
+
+**Transcribed Audio:**  Testing, testing, is this thing working? Tell me a joke.
+2025-11-29 18:55:32,357 - LLM - DEBUG - Attempting to transcribe audio from Untitled.m4a
+2025-11-29 18:55:32,360 - LLM - INFO - Starting audio transcription...
+2025-11-29 18:55:51,116 - LLM - INFO - Transcription complete.
+2025-11-29 18:55:51,117 - LLM - INFO - Request Content: do what the transcription says
+
+**Transcribed Audio:**  Testing, testing, is this thing working? Tell me a joke.
+2025-11-29 18:56:02,194 - LLM - DEBUG - Attempting to transcribe audio from Untitled.m4a
+2025-11-29 18:56:02,200 - LLM - INFO - Starting audio transcription...
+2025-11-29 18:56:22,502 - LLM - INFO - Transcription complete.
+2025-11-29 18:56:22,504 - LLM - INFO - Request Content: None
+
+**Transcribed Audio:**  Testing, testing, is this thing working? Tell me a joke.
+2025-11-29 18:59:27,635 - LLM - DEBUG - Attempting to transcribe audio from Untitled.m4a
+2025-11-29 18:59:27,635 - LLM - INFO - Starting audio transcription...
+2025-11-29 18:59:29,108 - LLM - INFO - Transcription complete.
+2025-11-29 18:59:29,108 - LLM - INFO - Request Content: None
+
+**Transcribed Audio:**  Testing, testing, is this thing working? Tell me a joke.
