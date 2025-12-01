@@ -101,7 +101,7 @@ class RapidClient:
         """
 
         if prompt is None:
-            prompt = "Helpful AI. Give me a bare string no added newlines"
+            prompt = "Helpful AI. If not in english translate. Give me a bare string no added newlines"
 
         final_user_message = message
 
