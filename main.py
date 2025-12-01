@@ -4,7 +4,13 @@ from typing import Annotated, Optional
 from fastapi import FastAPI
 from fastapi.params import Query
 
-from rapidllm import RapidClient, RapidClientSettings, RapidLogger, RapidLoggerConfig
+from rapidllm import (
+    RapidClient,
+    RapidClientSettings,
+    RapidLogger,
+    RapidLoggerConfig,
+    clean_and_load_json,
+)
 
 # TODO:Create audio depedency so that it's transcribed beforehand and path function just recieves text(str).
 
@@ -41,4 +47,5 @@ def simple_prompt(
     result = client.generate_chat_response(
         message=message, prompt=prompt, audio_path=audio_path
     )
-    return {"result": result}
+    json_result = clean_and_load_json(result)
+    return json_result

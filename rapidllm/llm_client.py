@@ -72,7 +72,7 @@ class RapidClient:
             with open(full_audio_path, "rb") as audio_file:
                 app_logger.info("Starting audio transcription...")
                 result = model.transcribe(full_audio_path)
-                app_logger.info("Transcription complete.")
+                app_logger.info("Transcription complete: %s", result["text"])
                 return result["text"]
         except Exception as e:
             app_logger.error(
@@ -84,7 +84,7 @@ class RapidClient:
     def generate_chat_response(
         self,
         message: str | None,
-        prompt: str | None = "Helpful AI. Give me a bare string no added newlines",
+        prompt: str | None,
         audio_path: Optional[str] = None,
     ) -> str:
         """
@@ -100,6 +100,9 @@ class RapidClient:
             str: The text content of the model's response.
         """
 
+        if prompt is None:
+            prompt = "Helpful AI. Give me a bare string no added newlines"
+
         final_user_message = message
 
         # 1. Handle the optional audio file
@@ -109,9 +112,7 @@ class RapidClient:
 
             if transcribed_text:
                 # Combine the original message with the transcribed audio text
-                final_user_message = (
-                    f"{message}\n\n" f"**Transcribed Audio:** {transcribed_text}"
-                ).strip()
+                final_user_message = (f"{transcribed_text}").strip()
             else:
                 # Log an error but continue with the original message
                 app_logger.warning(
@@ -120,10 +121,14 @@ class RapidClient:
 
         # Fallback if no text message and no transcribed audio
         if not final_user_message:
+            app_logger.warning("Error no user message or audio")
             return "Error: User message or successfully transcribed audio must be provided."
 
         # 2. Assemble the final messages list
-        app_logger.info("Request Content: %s", final_user_message)
+        app_logger.info(
+            f"\n Meesage: {message} \n Prompt: {prompt} \n Request Content:  { final_user_message }\n"
+        )
+
         messages = [
             {"role": "system", "content": prompt},
             # The 'content' for the user role is now a single string of combined text
